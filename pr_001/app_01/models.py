@@ -4,14 +4,14 @@ from datetime import date
 
 class Logo(models.Model):
     "logotipe of activity"
-    image = models.ImageField()   #default!
+    image = models.ImageField('Logo', upload_to="logo/", default='default.png')   #default!
 
 
 
 class Activity(models.Model):
     """ Activity """
     name = models.CharField(max_length=60, verbose_name='Activity name')
-    image = models.ForeignKey(Logo, verbose_name='Logo', on_delete=models.CASCADE, blank=True)  #blank + default?
+    image = models.ForeignKey(Logo, verbose_name='Logo', on_delete=models.CASCADE)  #blank + default?
 
     def __str__(self):
         return self.name
